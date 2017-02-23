@@ -1,0 +1,50 @@
+{
+	"name": "data-values/text",
+	"type": "library",
+	"description": "Contains text implementations of the interfaces defined by DataValuesInterfaces",
+	"homepage": "https://github.com/DataValues/Text",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Thiemo Mättig"
+		}
+	],
+	"support": {
+		"irc": "irc://irc.freenode.net/wikidata"
+	},
+	"require": {
+		"php": ">=5.5.9",
+		"data-values/data-values": "~1.0|~0.1",
+		"data-values/interfaces": "~0.2.0|~0.1.5"
+	},
+	"require-dev": {
+		"jakub-onderka/php-parallel-lint": ">=0.3 <0.10",
+		"mediawiki/mediawiki-codesniffer": ">=0.4 <0.8",
+		"phpunit/phpunit": "~4.8"
+	},
+	"autoload": {
+		"psr-4": {
+			"ValueFormatters\\": "src/Formatters/",
+			"ValueParsers\\": "src/Parsers/",
+			"ValueValidators\\": "src/Validators/",
+			"DataValues\\": "src/Values/"
+		}
+	},
+	"scripts": {
+		"test": [
+			"@validate --no-interaction",
+			"parallel-lint . --exclude vendor",
+			"vendor/bin/phpunit --coverage-php /dev/null"
+		],
+		"cs": [
+			"@phpcs"
+		],
+		"ci": [
+			"@test",
+			"@cs"
+		],
+		"phpcs": [
+			"vendor/bin/phpcs -sp --standard=phpcs.xml ."
+		]
+	}
+}
