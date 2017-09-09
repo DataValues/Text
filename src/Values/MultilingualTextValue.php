@@ -17,7 +17,7 @@ class MultilingualTextValue extends DataValueObject {
 	 *
 	 * @var MonolingualTextValue[]
 	 */
-	private $texts = array();
+	private $texts = [];
 
 	/**
 	 * @since 0.1
@@ -29,13 +29,17 @@ class MultilingualTextValue extends DataValueObject {
 	public function __construct( array $monolingualValues ) {
 		foreach ( $monolingualValues as $monolingualValue ) {
 			if ( !( $monolingualValue instanceof MonolingualTextValue ) ) {
-				throw new IllegalValueException( 'Can only construct MultilingualTextValue from MonolingualTextValue objects' );
+				throw new IllegalValueException(
+					'Can only construct MultilingualTextValue from MonolingualTextValue objects'
+				);
 			}
 
 			$languageCode = $monolingualValue->getLanguageCode();
 
 			if ( array_key_exists( $languageCode, $this->texts ) ) {
-				throw new IllegalValueException( 'Can only add a single MonolingualTextValue per language to a MultilingualTextValue' );
+				throw new IllegalValueException(
+					'Can only add a single MonolingualTextValue per language to a MultilingualTextValue'
+				);
 			}
 
 			$this->texts[$languageCode] = $monolingualValue;
@@ -105,7 +109,7 @@ class MultilingualTextValue extends DataValueObject {
 	 * @return mixed
 	 */
 	public function getArrayValue() {
-		$values = array();
+		$values = [];
 
 		/**
 		 * @var MonolingualTextValue $text
@@ -134,7 +138,7 @@ class MultilingualTextValue extends DataValueObject {
 			throw new IllegalValueException( "array expected" );
 		}
 
-		$values = array();
+		$values = [];
 
 		foreach ( $data as $monolingualValue ) {
 			$values[] = MonolingualTextValue::newFromArray( $monolingualValue );

@@ -1,7 +1,7 @@
 # DataValues Text
 
 DataValues Text is a small library build on top of DataValues that provides text
-implementations of the DataValues, ValueParsers, ValueFormatters and ValueValidators interfaces.
+implementations of the DataValues, ValueParsers, and ValueFormatters interfaces.
 
 It is part of the [DataValues set of libraries](https://github.com/DataValues).
 
@@ -49,7 +49,7 @@ DataValues Text has been written by the Wikidata team, as [Wikimedia Germany]
 
 ## Release notes
 
-### 0.1.0 (2013-11-17)
+### 0.1.0 (2017-09-09)
 
 Initial release with these features:
 
