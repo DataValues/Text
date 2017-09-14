@@ -31,7 +31,7 @@
 	},
 	"scripts": {
 		"test": [
-			"@validate --no-interaction",
+			"composer validate --no-interaction",
 			"parallel-lint . --exclude vendor",
 			"phpcs -p -s",
 			"phpunit --coverage-php /dev/null"
