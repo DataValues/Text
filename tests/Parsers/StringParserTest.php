@@ -4,6 +4,7 @@ namespace ValueParsers\Test;
 
 use DataValues\DataValue;
 use DataValues\StringValue;
+use InvalidArgumentException;
 use ValueParsers\Normalizers\StringNormalizer;
 use ValueParsers\StringParser;
 
@@ -19,7 +20,7 @@ use ValueParsers\StringParser;
 class StringParserTest extends \PHPUnit_Framework_TestCase {
 
 	public function provideParse() {
-		$normalizer = $this->getMock( 'ValueParsers\Normalizers\StringNormalizer' );
+		$normalizer = $this->getMock( StringNormalizer::class );
 		$normalizer->expects( $this->once() )
 			->method( 'normalize' )
 			->will( $this->returnCallback( function( $value ) {
@@ -39,7 +40,7 @@ class StringParserTest extends \PHPUnit_Framework_TestCase {
 		$parser = new StringParser( $normalizer );
 		$value = $parser->parse( $input );
 
-		$this->assertInstanceOf( 'DataValues\StringValue', $value );
+		$this->assertInstanceOf( StringValue::class, $value );
 		$this->assertEquals( $expected->toArray(), $value->toArray() );
 	}
 
@@ -56,7 +57,7 @@ class StringParserTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testGivenNonString_parseThrowsException( $input ) {
 		$parser = new StringParser();
-		$this->setExpectedException( 'InvalidArgumentException' );
+		$this->setExpectedException( InvalidArgumentException::class );
 		$parser->parse( $input );
 	}
 

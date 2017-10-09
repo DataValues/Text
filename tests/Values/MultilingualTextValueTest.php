@@ -24,7 +24,7 @@ class MultilingualTextValueTest extends DataValueTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'DataValues\MultilingualTextValue';
+		return MultilingualTextValue::class;
 	}
 
 	public function validConstructorArgumentsProvider() {
