@@ -1,3 +1,5 @@
+DISCONTINUED: This repository has never reached the alpha stage.
+
 # DataValues Text
 
 DataValues Text is a small library build on top of DataValues that provides text
